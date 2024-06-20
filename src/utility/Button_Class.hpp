@@ -10,12 +10,7 @@
 namespace m5 {
 class Button_Class {
    public:
-    enum button_state_t : std::uint8_t {
-        state_nochange,
-        state_clicked,
-        state_hold,
-        state_decide_click_count
-    };
+    enum button_state_t : std::uint8_t { state_nochange, state_clicked, state_hold, state_decide_click_count };
 
     /// Returns true when the button is pressed briefly and released.
     bool wasClicked(void) const {
@@ -45,8 +40,7 @@ class Button_Class {
         return _currentState == state_decide_click_count;
     }
 
-    [[deprecated("use wasDecideClickCount()")]] bool wasDeciedClickCount(
-        void) const {
+    [[deprecated("use wasDecideClickCount()")]] bool wasDeciedClickCount(void) const {
         return wasDecideClickCount();
     }
 
@@ -81,8 +75,7 @@ class Button_Class {
         return _oldPress && !_press && _lastHoldPeriod >= ms;
     }
 
-    [[deprecated("use wasReleaseFor()")]] bool wasReleasefor(
-        std::uint32_t ms) const {
+    [[deprecated("use wasReleaseFor()")]] bool wasReleasefor(std::uint32_t ms) const {
         return wasReleaseFor(ms);
     }
     bool pressedFor(std::uint32_t ms) const {
@@ -127,12 +120,11 @@ class Button_Class {
     std::uint16_t _msecDebounce   = 10;
     std::uint16_t _msecHold       = 500;
     std::uint16_t _lastHoldPeriod = 0;
-    button_state_t _currentState =
-        state_nochange;  // 0:nochange  1:click  2:hold
-    bool _raw_press          = false;
-    std::uint8_t _press      = 0;  // 0:release  1:click  2:holding
-    std::uint8_t _oldPress   = 0;
-    std::uint8_t _clickCount = 0;
+    button_state_t _currentState  = state_nochange;  // 0:nochange  1:click  2:hold
+    bool _raw_press               = false;
+    std::uint8_t _press           = 0;  // 0:release  1:click  2:holding
+    std::uint8_t _oldPress        = 0;
+    std::uint8_t _clickCount      = 0;
 };
 
 }  // namespace m5
